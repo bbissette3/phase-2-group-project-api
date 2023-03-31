@@ -1,11 +1,13 @@
 // See https://github.com/typicode/json-server#module
+const path = require("path")
+const fs = require("fs");
+const os = require("os");
+
 const jsonServer = require('json-server')
 const server = jsonServer.create()
 const router = jsonServer.router(path.resolve(os.tmpdir() + "/db.json"));
 const middlewares = jsonServer.defaults()
 
-const fs = require("fs");
-const os = require("os");
 
 fs.copyFile("db.json", os.tmpdir() + "/db.json", function (err) {
   if (err) console.log(err);
